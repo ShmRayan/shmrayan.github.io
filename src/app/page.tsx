@@ -85,13 +85,9 @@ const CONTENT = {
         title: "Fitness Coaching App",
         desc: "Full-stack platform with personalized workout plans and secure JWT auth."
       },
-      task: {
-        title: "Task Management",
-        desc: "Cloud-native task tracking app containerized with Docker on AWS."
-      },
-      coaching: {
-        title: "Online Coaching",
-        desc: "UX-focused coaching platform with dynamic scheduling features."
+      vora: {
+        title: "Luxury E-Commerce App",
+        desc: "An ultra-premium e-commerce shop disguised as a futuristic design laboratory. "
       }
     }
   },
@@ -148,13 +144,9 @@ const CONTENT = {
         title: "App de Coaching Fitness",
         desc: "Plateforme full-stack avec plans d'entraînement personnalisés et auth JWT sécurisée."
       },
-      task: {
-        title: "Gestion de Tâches",
-        desc: "App de suivi de tâches Cloud-native conteneurisée avec Docker sur AWS."
-      },
-      coaching: {
-        title: "Coaching en Ligne",
-        desc: "Plateforme de coaching axée sur l'UX avec fonctionnalités de planification dynamique."
+      vora: {
+        title: "App de Boutique de Luxe",
+        desc: "Une boutique en ligne ultra-premium déguisée en laboratoire de design futuriste."
       }
     }
   }
@@ -334,28 +326,22 @@ export default function Home() {
                         stack={['Python', 'Selenium', 'OpenAI']}
                         links={{ repo: "https://github.com/ShmRayan", demo: "#" }}
                         color="from-indigo-500/20 to-purple-500/20"
+                        className="md:col-span-2 md:w-[calc(50%-10px)] mx-auto" //center
                       />
                       <ProjectShowcase 
                         title={t.projects.fitness.title}
                         desc={t.projects.fitness.desc}
-                        stack={['React', 'Node.js', 'JWT']}
-                        links={{ repo: "https://github.com/ShmRayan", demo: "#" }}
+                        stack={['React', 'Bootstrap','JWT',  'Fitness']}
+                        links={{ repo: "https://github.com/ShmRayan/FitRay", demo: "https://shmrayan.github.io/FitRay" }}
                         color="from-blue-500/20 to-cyan-500/20"
                       />
                       <ProjectShowcase 
-                        title={t.projects.task.title}
-                        desc={t.projects.task.desc}
-                        stack={['Flask', 'Docker', 'AWS']}
-                        links={{ repo: "https://github.com/ShmRayan", demo: "#" }}
-                        color="from-orange-500/20 to-red-500/20"
-                      />
-                      <ProjectShowcase 
-                        title={t.projects.coaching.title}
-                        desc={t.projects.coaching.desc}
-                        stack={['React', 'Figma', 'UX']}
-                        links={{ repo: "https://github.com/ShmRayan", demo: "#" }}
-                        color="from-emerald-500/20 to-teal-500/20"
-                      />
+                        title={t.projects.vora.title}
+                        desc={t.projects.vora.desc}
+                        stack={['React', 'Tailwindcss', 'Luxury']}
+                        links={{ repo: "https://github.com/ShmRayan/Vora", demo: "https://shmrayan.github.io/Vora" }}
+                        color="from-emerald-500/20 to-teal-500/20"                         
+                      />                                           
                   </div>
                 </div>
               </section>
@@ -546,9 +532,9 @@ function TechCard({ name, slug }: { name: string, slug: string }) {
   );
 }
 
-function ProjectShowcase({ title, desc, stack, color, links }: any) {
+function ProjectShowcase({ title, desc, stack, color, links,className }: any) {
   return (
-    <div className="group relative bg-neutral-800/50 border border-white/10 rounded-3xl overflow-hidden hover:bg-neutral-800 transition-all duration-500 flex flex-col hover:border-white/20 hover:shadow-xl shadow-md">
+    <div className={`group relative bg-neutral-800/50 border border-white/10 rounded-3xl overflow-hidden hover:bg-neutral-800 transition-all duration-500 flex flex-col hover:border-white/20 hover:shadow-xl shadow-md ${className}`}>
       <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${color} rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
       <div className="relative z-10 p-6 flex flex-col h-full">
         <div className="flex justify-between items-start mb-4">
