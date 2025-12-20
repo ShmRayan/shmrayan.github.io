@@ -324,7 +324,7 @@ export default function Home() {
                         title={t.projects.autoapply.title}
                         desc={t.projects.autoapply.desc}
                         stack={['Python', 'Selenium', 'OpenAI']}
-                        links={{ repo: "https://github.com/ShmRayan", demo: "#" }}
+                        links={{ repo: "https://github.com/ShmRayan", demo: "https://shmrayan.github.io" }}
                         color="from-indigo-500/20 to-purple-500/20"
                         className="md:col-span-2 md:w-[calc(50%-10px)] mx-auto" //center
                       />
