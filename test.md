@@ -1,6 +1,6 @@
 test local:
+npm install
 npm run dev
-
 
 
 

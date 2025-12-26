@@ -88,6 +88,10 @@ const CONTENT = {
       vora: {
         title: "Luxury E-Commerce App",
         desc: "An ultra-premium e-commerce shop disguised as a futuristic design laboratory. "
+      },
+      pms: {
+        title: <>Pharmacy Management <br/> System</>,
+        desc: "Modular backend for prescription and inventory management using Clean Architecture and DDD. Used Docker and CI/CD automation."
       }
     }
   },
@@ -147,7 +151,11 @@ const CONTENT = {
       vora: {
         title: "App de Boutique de Luxe",
         desc: "Une boutique en ligne ultra-premium déguisée en laboratoire de design futuriste."
-      }
+      },
+      pms: {
+        title: "Système de Gestion de Pharmacie",
+        desc: "Backend modulaire pour la gestion des prescriptions et inventaires (Clean Architecture & DDD). Conteneurisé avec Docker et automatisé CI/CD."
+      },
     }
   }
 };
@@ -323,11 +331,18 @@ export default function Home() {
                       <ProjectShowcase 
                         title={t.projects.autoapply.title}
                         desc={t.projects.autoapply.desc}
-                        stack={['Python', 'Selenium', 'OpenAI']}
-                        links={{ repo: "https://github.com/ShmRayan", demo: "https://shmrayan.github.io" }}
+                        stack={['Python', 'Selenium', 'SQLAlchemy','scikit-learn', 'NumPy']}
+                        links={{ repo: "https://github.com/ShmRayan/ApplyAI" }}
                         color="from-indigo-500/20 to-purple-500/20"
-                        className="md:col-span-2 md:w-[calc(50%-10px)] mx-auto" //center
+                        //className="md:col-span-2 md:w-[calc(50%-10px)] mx-auto" //center
                       />
+                      <ProjectShowcase 
+                          title={t.projects.pms.title}
+                          desc={t.projects.pms.desc}
+                          stack={['Java', 'Spring Boot', 'Docker', 'MySQL']}
+                          links={{ repo: "https://github.com/ShmRayan/UYP-PMS" }} 
+                          color="from-orange-500/20 to-red-500/20"
+                        />
                       <ProjectShowcase 
                         title={t.projects.fitness.title}
                         desc={t.projects.fitness.desc}
@@ -367,6 +382,7 @@ export default function Home() {
                       <TechCard name="SQL" slug="/icons/database-svgrepo-com.svg" /> 
                       <TechCard name="Docker" slug="docker" />
                       <TechCard name="CI/CD" slug="/icons/systems-devops-cicd-pipeline-svgrepo-com.svg" /> 
+                      <TechCard name="Git" slug="/icons/git-svgrepo-com.svg" />
                       <TechCard name="Power BI" slug="/icons/powerbi.png" />
                   </div>
                 </div>
@@ -532,7 +548,7 @@ function TechCard({ name, slug }: { name: string, slug: string }) {
   );
 }
 
-function ProjectShowcase({ title, desc, stack, color, links,className }: any) {
+function ProjectShowcase({ title, desc, stack, color, links, className }: any) {
   return (
     <div className={`group relative bg-neutral-800/50 border border-white/10 rounded-3xl overflow-hidden hover:bg-neutral-800 transition-all duration-500 flex flex-col hover:border-white/20 hover:shadow-xl shadow-md ${className}`}>
       <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${color} rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
@@ -542,12 +558,17 @@ function ProjectShowcase({ title, desc, stack, color, links,className }: any) {
             {title}
           </h4>
           <div className="flex gap-2">
-            <a href={links?.repo} target="_blank" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 text-neutral-400 hover:text-white transition">
-              <Github size={16}/>
-            </a>
-            <a href={links?.demo} target="_blank" className="p-2 bg-indigo-500/10 rounded-lg hover:bg-indigo-500 text-indigo-400 hover:text-white transition">
-              <ExternalLink size={16}/>
-            </a>
+            {links?.repo && (
+              <a href={links.repo} target="_blank" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 text-neutral-400 hover:text-white transition">
+                <Github size={16}/>
+              </a>
+            )}
+            
+            {links?.demo && (
+              <a href={links.demo} target="_blank" className="p-2 bg-indigo-500/10 rounded-lg hover:bg-indigo-500 text-indigo-400 hover:text-white transition">
+                <ExternalLink size={16}/>
+              </a>
+            )}
           </div>
         </div>
         <p className="text-sm text-neutral-300 leading-relaxed mb-6 flex-grow">
@@ -564,7 +585,6 @@ function ProjectShowcase({ title, desc, stack, color, links,className }: any) {
     </div>
   );
 }
-
 function Typewriter({ text }: { text: string }) {
   const [displayText, setDisplayText] = useState("");
   const [isFinished, setIsFinished] = useState(false);
