@@ -4,8 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { 
   Github, 
   Linkedin, 
-  Mail, 
-  Calendar,
   Download, 
   MapPin, 
   GraduationCap, 
@@ -15,15 +13,20 @@ import {
   Terminal, 
   ExternalLink,
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Calendar
 } from "lucide-react";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState, useRef } from "react";
 
+// --- ANIMATIONS UTILS ---
 const Reveal = ({ children }: { children: ReactNode }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
@@ -31,6 +34,7 @@ const Reveal = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// --- DATA CONTENT ---
 const CONTENT = {
   en: {
     role: "Software Engineering Student",
@@ -75,26 +79,58 @@ const CONTENT = {
     },
     education: {
       degree: "BASc in Software Engineering",
-      details: <>Dean's Honour List (2023, 2024, 2025) <br/> GPA: 8.4/10</>
+      details: <>Dean's Honour List (2023, 2024, 2025, 2026) <br/> GPA: 8.52/10</>
     },
-    projects: {
-      autoapply: {
+    projects: [
+      {
+        id: "sentinel",
+        title: "Sentinel",
+        desc: "Real-time Autonomous Cyber-Defense Mesh. An Event-Driven Architecture (EDA) powered by Solace PubSub+ and Multi-Agent AI to neutralize threats instantly.",
+        stack: ['Python', 'Solace PubSub+', 'Multi-Agent AI', 'EDA'],
+        links: { repo: "https://github.com/ShmRayan/Sentinel", demo: "https://sentinel-dashb.vercel.app" },
+        color: "from-blue-600/20 to-indigo-600/20"
+      },
+      {
+        id: "vibecheck",
+        title: "VibeCheck",
+        desc: "The end of boring surveys. Real-time conversational AI feedback platform powered by Groq (Llama 3) & Sentry for instant sentiment analysis.",
+        stack: ['TypeScript', 'Groq (Llama 3)', 'Next.js', 'Sentry'],
+        links: { repo: "https://github.com/ShmRayan/VibeCheck", demo: "https://vibecheck-aidemo.vercel.app/" },
+        color: "from-purple-500/20 to-pink-500/20"
+      },
+      {
+        id: "autoapply",
         title: "AutoApply AI Agent",
-        desc: "Intelligent bot using Generative AI & Selenium to automate job applications."
+        desc: "Intelligent bot using Generative AI & Selenium to automate job applications. Scrapes boards, matches resumes using vector embeddings.",
+        stack: ['Python', 'Selenium', 'SQLAlchemy','scikit-learn'],
+        links: { repo: "https://github.com/ShmRayan/ApplyAI" },
+        color: "from-indigo-500/20 to-purple-500/20"
       },
-      fitness: {
+      {
+        id: "pms",
+        title: "Pharmacy Management System",
+        desc: "Modular backend for prescription and inventory management using Clean Architecture and DDD. Used Docker and CI/CD automation.",
+        stack: ['Java', 'Spring Boot', 'Docker', 'MySQL'],
+        links: { repo: "https://github.com/ShmRayan/UYP-PMS" },
+        color: "from-orange-500/20 to-red-500/20"
+      },
+      {
+        id: "fitness",
         title: "Fitness Coaching App",
-        desc: "Full-stack platform with personalized workout plans and secure JWT auth."
+        desc: "Full-stack platform with personalized workout plans and secure JWT auth. Features interactive booking and progress tracking.",
+        stack: ['React', 'Bootstrap','JWT',  'Fitness'],
+        links: { repo: "https://github.com/ShmRayan/FitRay", demo: "https://shmrayan.github.io/FitRay" },
+        color: "from-blue-500/20 to-cyan-500/20"
       },
-      vora: {
+      {
+        id: "vora",
         title: "Luxury E-Commerce App",
-        desc: "An ultra-premium e-commerce shop disguised as a futuristic design laboratory. "
-      },
-      pms: {
-        title: <>Pharmacy Management <br/> System</>,
-        desc: "Modular backend for prescription and inventory management using Clean Architecture and DDD. Used Docker and CI/CD automation."
+        desc: "An ultra-premium e-commerce shop disguised as a futuristic design laboratory. Built with modern React patterns and Tailwind v4.",
+        stack: ['React', 'Tailwindcss', 'Luxury'],
+        links: { repo: "https://github.com/ShmRayan/Vora", demo: "https://shmrayan.github.io/Vora" },
+        color: "from-emerald-500/20 to-teal-500/20"
       }
-    }
+    ]
   },
   fr: {
     role: "Étudiant en Génie Logiciel",
@@ -141,24 +177,56 @@ const CONTENT = {
       degree: "BASc en Génie Logiciel",
       details: <>Palmarès du Doyen (2023, 2024, 2025) <br/> Moyenne: 8.4/10</>
     },
-    projects: {
-      autoapply: {
+    projects: [
+      {
+        id: "sentinel",
+        title: "Sentinel",
+        desc: "Maillage de Cyber-Défense Autonome en temps réel. Architecture orientée événements (EDA) propulsée par Solace PubSub+ et IA Multi-Agents.",
+        stack: ['Python', 'Solace PubSub+', 'Multi-Agent AI', 'EDA'],
+        links: { repo: "https://github.com/ShmRayan/Sentinel", demo: "https://sentinel-dashb.vercel.app" },
+        color: "from-blue-600/20 to-indigo-600/20"
+      },
+      {
+        id: "vibecheck",
+        title: "VibeCheck",
+        desc: "La fin des sondages ennuyeux. Plateforme de feedback IA conversationnelle en temps réel propulsée par Groq (Llama 3) & Sentry.",
+        stack: ['TypeScript', 'Groq (Llama 3)', 'Next.js', 'Sentry'],
+        links: { repo: "https://github.com/ShmRayan/VibeCheck", demo: "https://vibecheck-aidemo.vercel.app/" },
+        color: "from-purple-500/20 to-pink-500/20"
+      },
+      {
+        id: "autoapply",
         title: "AutoApply AI Agent",
-        desc: "Bot intelligent utilisant l'IA générative et Selenium pour automatiser les candidatures."
+        desc: "Bot intelligent utilisant l'IA générative et Selenium pour automatiser les candidatures. Scrape les job boards et adapte les CV.",
+        stack: ['Python', 'Selenium', 'SQLAlchemy','scikit-learn'],
+        links: { repo: "https://github.com/ShmRayan/ApplyAI" },
+        color: "from-indigo-500/20 to-purple-500/20"
       },
-      fitness: {
-        title: "App de Coaching Fitness",
-        desc: "Plateforme full-stack avec plans d'entraînement personnalisés et auth JWT sécurisée."
-      },
-      vora: {
-        title: "App de Boutique de Luxe",
-        desc: "Une boutique en ligne ultra-premium déguisée en laboratoire de design futuriste."
-      },
-      pms: {
+      {
+        id: "pms",
         title: "Système de Gestion de Pharmacie",
-        desc: "Backend modulaire pour la gestion des prescriptions et inventaires (Clean Architecture & DDD). Conteneurisé avec Docker et automatisé CI/CD."
+        desc: "Backend modulaire pour la gestion des prescriptions et inventaires (Clean Architecture & DDD). Conteneurisé avec Docker et CI/CD.",
+        stack: ['Java', 'Spring Boot', 'Docker', 'MySQL'],
+        links: { repo: "https://github.com/ShmRayan/UYP-PMS" },
+        color: "from-orange-500/20 to-red-500/20"
       },
-    }
+      {
+        id: "fitness",
+        title: "App de Coaching Fitness",
+        desc: "Plateforme full-stack avec plans d'entraînement personnalisés et auth JWT sécurisée. Réservation interactive.",
+        stack: ['React', 'Bootstrap','JWT',  'Fitness'],
+        links: { repo: "https://github.com/ShmRayan/FitRay", demo: "https://shmrayan.github.io/FitRay" },
+        color: "from-blue-500/20 to-cyan-500/20"
+      },
+      {
+        id: "vora",
+        title: "App de Boutique de Luxe",
+        desc: "Une boutique en ligne ultra-premium déguisée en laboratoire de design futuriste. UI moderne avec Tailwind v4.",
+        stack: ['React', 'Tailwindcss', 'Luxury'],
+        links: { repo: "https://github.com/ShmRayan/Vora", demo: "https://shmrayan.github.io/Vora" },
+        color: "from-emerald-500/20 to-teal-500/20"
+      }
+    ]
   }
 };
 
@@ -167,7 +235,7 @@ export default function Home() {
   const t = CONTENT[lang];
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-300 selection:bg-indigo-500/30 font-sans">
+    <div className="min-h-screen bg-neutral-950 text-neutral-300 selection:bg-indigo-500/30 font-sans overflow-x-hidden">
 
       <div className="fixed inset-0 z-0 h-full w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]"></div>
       
@@ -233,12 +301,6 @@ export default function Home() {
 
               {/* ACTIONS  */}
               <div className="flex items-center gap-3 mt-auto">
-                {/* ANCIEN CODE (MAIL) EN COMMENTAIRE : 
-                  <a href="mailto:shmrayan@gmail.com?subject=Resume Request&body=Hello Rayan, we need to nerf you immediately because you are too good. Jokes aside, I would like to see your resume." 
-                    className="flex-grow bg-white text-black h-14 rounded-2xl font-black text-sm hover:scale-[1.02] active:scale-95 transition-all flex justify-center items-center gap-2 shadow-lg">
-                    <Mail size={18}/> {t.resumeBtn}
-                  </a>
-                */}
                 <a href={t.resumeLink} 
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -329,46 +391,16 @@ export default function Home() {
               </section>
             </Reveal>
             
-            {/* SECTION: PROJECTS */}
+            {/* SECTION: PROJECTS (CAROUSEL) */}
             <Reveal>
                <section>
                 <div className="mb-6 ml-2">
                   <SectionHeader icon={<Terminal size={18}/>} title={t.titles.projects} />
                 </div>
                 
-                <div className="bg-neutral-800/50 border border-white/10 rounded-[2rem] p-8 md:p-10 shadow-2xl shadow-black/50">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                      <ProjectShowcase 
-                        title={t.projects.autoapply.title}
-                        desc={t.projects.autoapply.desc}
-                        stack={['Python', 'Selenium', 'SQLAlchemy','scikit-learn',]}
-                        links={{ repo: "https://github.com/ShmRayan/ApplyAI" }}
-                        color="from-indigo-500/20 to-purple-500/20"
-                        //className="md:col-span-2 md:w-[calc(50%-10px)] mx-auto" //center
-                      />
-                      <ProjectShowcase 
-                          title={t.projects.pms.title}
-                          desc={t.projects.pms.desc}
-                          stack={['Java', 'Spring Boot', 'Docker', 'MySQL']}
-                          links={{ repo: "https://github.com/ShmRayan/UYP-PMS" }} 
-                          color="from-orange-500/20 to-red-500/20"
-                        />
-                      <ProjectShowcase 
-                        title={t.projects.fitness.title}
-                        desc={t.projects.fitness.desc}
-                        stack={['React', 'Bootstrap','JWT',  'Fitness']}
-                        links={{ repo: "https://github.com/ShmRayan/FitRay", demo: "https://shmrayan.github.io/FitRay" }}
-                        color="from-blue-500/20 to-cyan-500/20"
-                      />
-                      <ProjectShowcase 
-                        title={t.projects.vora.title}
-                        desc={t.projects.vora.desc}
-                        stack={['React', 'Tailwindcss', 'Luxury']}
-                        links={{ repo: "https://github.com/ShmRayan/Vora", demo: "https://shmrayan.github.io/Vora" }}
-                        color="from-emerald-500/20 to-teal-500/20"                         
-                      />                                           
-                  </div>
-                </div>
+                {/* Conteneur du Carrousel */}
+                <ProjectCarousel projects={t.projects} />
+
               </section>
             </Reveal>
               
@@ -406,6 +438,115 @@ export default function Home() {
 
           </main>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// --- SUB COMPONENTS ---
+
+function ProjectCarousel({ projects }: { projects: any[] }) {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // -1 left, 1 right
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-play timer
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      nextProject();
+    }, 4000); // 4 secondes par projet
+
+    return () => clearInterval(timer);
+  }, [index, isPaused]);
+
+  const nextProject = () => {
+    setDirection(1);
+    setIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setDirection(-1);
+    setIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const currentProject = projects[index];
+
+  return (
+    <div 
+      className="relative bg-neutral-800/50 border border-white/10 rounded-[2rem] shadow-2xl shadow-black/50 overflow-hidden"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className="p-8 md:p-10 min-h-[380px] flex items-center">
+        
+        {/* Previous Button */}
+        <button 
+          onClick={prevProject}
+          className="absolute left-2 md:left-4 z-20 p-2 bg-neutral-900/50 hover:bg-indigo-500 text-white rounded-full border border-white/10 transition-all backdrop-blur-sm"
+        >
+          <ChevronLeft size={24} />
+        </button>
+
+        {/* Next Button */}
+        <button 
+          onClick={nextProject}
+          className="absolute right-2 md:right-4 z-20 p-2 bg-neutral-900/50 hover:bg-indigo-500 text-white rounded-full border border-white/10 transition-all backdrop-blur-sm"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        <div className="w-full relative overflow-hidden">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={currentProject.id}
+              custom={direction}
+              variants={{
+                enter: (direction) => ({
+                  x: direction > 0 ? 50 : -50,
+                  opacity: 0,
+                }),
+                center: {
+                  x: 0,
+                  opacity: 1,
+                },
+                exit: (direction) => ({
+                  x: direction > 0 ? -50 : 50,
+                  opacity: 0,
+                }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="w-full"
+            >
+              <ProjectShowcase 
+                title={currentProject.title}
+                desc={currentProject.desc}
+                stack={currentProject.stack}
+                links={currentProject.links}
+                color={currentProject.color}
+                isCarousel={true}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+      
+      {/* Progress Dots */}
+      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+        {projects.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setDirection(idx > index ? 1 : -1);
+              setIndex(idx);
+            }}
+            className={`h-1.5 rounded-full transition-all duration-300 ${idx === index ? 'w-8 bg-indigo-500' : 'w-2 bg-neutral-700 hover:bg-neutral-500'}`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -558,35 +699,49 @@ function TechCard({ name, slug }: { name: string, slug: string }) {
   );
 }
 
-function ProjectShowcase({ title, desc, stack, color, links, className }: any) {
+function ProjectShowcase({ title, desc, stack, color, links, isCarousel }: any) {
   return (
-    <div className={`group relative bg-neutral-800/50 border border-white/10 rounded-3xl overflow-hidden hover:bg-neutral-800 transition-all duration-500 flex flex-col hover:border-white/20 hover:shadow-xl shadow-md ${className}`}>
-      <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${color} rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
-      <div className="relative z-10 p-6 flex flex-col h-full">
-        <div className="flex justify-between items-start mb-4">
-          <h4 className="text-xl font-bold text-white tracking-tight group-hover:text-indigo-400 transition-colors">
+    <div className={`group relative rounded-3xl overflow-hidden flex flex-col h-full ${!isCarousel ? 'bg-neutral-800/50 border border-white/10 hover:bg-neutral-800 transition-all duration-500 hover:border-white/20 hover:shadow-xl shadow-md' : 'px-8 md:px-12 py-2'}`}>
+      
+      {/* Background Glow for Carousel */}
+      {isCarousel && (
+         <div className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gradient-to-br ${color} rounded-full blur-[100px] opacity-20 pointer-events-none`}></div>
+      )}
+
+      {/* Background Glow for Grid Card (original behavior) */}
+      {!isCarousel && (
+        <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${color} rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700`}></div>
+      )}
+
+      <div className="relative z-10 flex flex-col h-full items-center text-center">
+        
+        <div className="flex flex-col items-center gap-4 mb-6">
+           <h4 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-indigo-400 transition-colors">
             {title}
           </h4>
-          <div className="flex gap-2">
+          
+          <div className="flex gap-3">
             {links?.repo && (
-              <a href={links.repo} target="_blank" className="p-2 bg-white/5 rounded-lg hover:bg-white/10 text-neutral-400 hover:text-white transition">
-                <Github size={16}/>
+              <a href={links.repo} target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full hover:bg-white/10 text-neutral-400 hover:text-white transition text-xs font-bold border border-white/5">
+                <Github size={16}/> GitHub
               </a>
             )}
             
             {links?.demo && (
-              <a href={links.demo} target="_blank" className="p-2 bg-indigo-500/10 rounded-lg hover:bg-indigo-500 text-indigo-400 hover:text-white transition">
-                <ExternalLink size={16}/>
+              <a href={links.demo} target="_blank" className="flex items-center gap-2 px-4 py-2 bg-indigo-500/10 rounded-full hover:bg-indigo-500 text-indigo-400 hover:text-white transition text-xs font-bold border border-indigo-500/20">
+                <ExternalLink size={16}/> Live Demo
               </a>
             )}
           </div>
         </div>
-        <p className="text-sm text-neutral-300 leading-relaxed mb-6 flex-grow">
+
+        <p className="text-base md:text-lg text-neutral-300 leading-relaxed mb-8 max-w-2xl mx-auto">
           {desc}
         </p>
-        <div className="flex flex-wrap gap-2 mt-auto">
+
+        <div className="flex flex-wrap justify-center gap-2 mt-auto">
           {stack.map((s: string) => (
-            <span key={s} className="flex items-center gap-1 text-[10px] font-bold text-neutral-400 bg-white/5 px-2 py-1 rounded-lg border border-white/10">
+            <span key={s} className="flex items-center gap-1.5 text-[11px] font-bold text-neutral-300 bg-neutral-900/50 px-3 py-1.5 rounded-lg border border-white/10 shadow-sm">
               <Sparkles size={12} className="text-indigo-500" /> {s}
             </span>
           ))}
@@ -595,6 +750,7 @@ function ProjectShowcase({ title, desc, stack, color, links, className }: any) {
     </div>
   );
 }
+
 function Typewriter({ text }: { text: string }) {
   const [displayText, setDisplayText] = useState("");
   const [isFinished, setIsFinished] = useState(false);
