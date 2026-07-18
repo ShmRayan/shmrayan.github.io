@@ -335,9 +335,7 @@ export default function Home() {
                 {t.availability}
               </p>
               <h1 className="font-display text-[clamp(2.75rem,7vw,5.25rem)] font-semibold leading-[0.95] tracking-tight text-ink">
-                Rayan Saadani
-                <br />
-                Hassani
+                <Typewriter text={"Rayan Saadani\nHassani"} />
               </h1>
               <p className="mt-4 text-base font-medium text-ink-soft md:text-lg">{t.role}</p>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">
@@ -529,6 +527,56 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+const NAME_TYPED_KEY = "rsh-name-typed";
+
+function Typewriter({ text }: { text: string }) {
+  const [displayText, setDisplayText] = useState("");
+  const [isFinished, setIsFinished] = useState(false);
+
+  useEffect(() => {
+    const alreadyTyped =
+      typeof window !== "undefined" &&
+      sessionStorage.getItem(NAME_TYPED_KEY) === "1";
+
+    if (alreadyTyped) {
+      setDisplayText(text);
+      setIsFinished(true);
+      return;
+    }
+
+    let i = 0;
+    setIsFinished(false);
+    setDisplayText("");
+
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        setDisplayText(text.slice(0, i + 1));
+        i += 1;
+      } else {
+        clearInterval(timer);
+        setIsFinished(true);
+        sessionStorage.setItem(NAME_TYPED_KEY, "1");
+      }
+    }, 90);
+
+    return () => clearInterval(timer);
+  }, [text]);
+
+  return (
+    <span className="inline-block whitespace-pre-wrap">
+      {displayText}
+      {!isFinished && (
+        <motion.span
+          aria-hidden
+          animate={{ opacity: [1, 0] }}
+          transition={{ repeat: Infinity, duration: 0.8 }}
+          className="mb-[-0.08em] ml-1 inline-block h-[0.85em] w-[0.08em] align-baseline bg-accent"
+        />
+      )}
+    </span>
   );
 }
 
