@@ -15,7 +15,7 @@ const display = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Rayan Saadani Hassani · Full-Stack Developer",
+  title: "Rayan Saadani Hassani",
   description:
     "Full-stack developer and new grad (Dec 2026, uOttawa). Open to full-time roles in Ottawa. React, APIs, and production systems.",
 };

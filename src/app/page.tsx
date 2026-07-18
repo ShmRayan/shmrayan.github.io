@@ -326,11 +326,7 @@ export default function Home() {
         <section className="relative overflow-hidden border-b border-line">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(12,18,34,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(12,18,34,0.04)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
           <div className="relative mx-auto max-w-6xl px-5 pb-20 pt-16 md:px-8 md:pb-28 md:pt-24">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
+            <div>
               <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-accent">
                 {t.availability}
               </p>
@@ -378,7 +374,7 @@ export default function Home() {
                 </span>
                 <span>uOttawa · BASc Software Engineering</span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -593,9 +589,10 @@ function Reveal({
   children: ReactNode;
   delay?: number;
 }) {
+  // Never start at opacity:0 — static export stays blank if JS is slow/blocked.
   return (
     <motion.div
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 1, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
