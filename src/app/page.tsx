@@ -526,23 +526,11 @@ export default function Home() {
   );
 }
 
-const NAME_TYPED_KEY = "rsh-name-typed";
-
 function Typewriter({ text }: { text: string }) {
   const [displayText, setDisplayText] = useState("");
   const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
-    const alreadyTyped =
-      typeof window !== "undefined" &&
-      sessionStorage.getItem(NAME_TYPED_KEY) === "1";
-
-    if (alreadyTyped) {
-      setDisplayText(text);
-      setIsFinished(true);
-      return;
-    }
-
     let i = 0;
     setIsFinished(false);
     setDisplayText("");
@@ -554,7 +542,6 @@ function Typewriter({ text }: { text: string }) {
       } else {
         clearInterval(timer);
         setIsFinished(true);
-        sessionStorage.setItem(NAME_TYPED_KEY, "1");
       }
     }, 90);
 
