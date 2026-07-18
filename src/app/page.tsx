@@ -6,6 +6,7 @@ import {
   Linkedin,
   Download,
   MapPin,
+  Mail,
   ExternalLink,
   ArrowUpRight,
   ChevronLeft,
@@ -373,6 +374,13 @@ export default function Home() {
                   {t.location}
                 </span>
                 <span>uOttawa · BASc Software Engineering</span>
+                <a
+                  href="mailto:shmrayan@gmail.com"
+                  className="inline-flex items-center gap-2 transition hover:text-accent"
+                >
+                  <Mail size={14} className="text-accent" />
+                  shmrayan@gmail.com
+                </a>
               </div>
             </div>
           </div>
