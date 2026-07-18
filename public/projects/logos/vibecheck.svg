@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="VibeCheck">
+  <rect width="32" height="32" rx="8" fill="#581C87"/>
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="7.25" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+  <!-- Microphone: matches VibeCheck's app icon (🎤) -->
+  <rect x="13" y="7.5" width="6" height="10" rx="3" fill="#fff"/>
+  <path d="M10.5 15.5v1c0 3 2.5 5.25 5.5 5.25s5.5-2.25 5.5-5.25v-1" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M16 21.75V24.5M12.75 24.5h6.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+</svg>

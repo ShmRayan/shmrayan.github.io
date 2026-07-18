@@ -9,8 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        bg: "var(--bg)",
+        elevated: "var(--bg-elevated)",
+        ink: "var(--ink)",
+        "ink-soft": "var(--ink-soft)",
+        muted: "var(--muted)",
+        line: "var(--line)",
+        accent: "var(--accent)",
+        "accent-soft": "var(--accent-soft)",
+        "accent-hover": "var(--accent-hover)",
+        tint: "var(--surface-tint)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
     },
   },

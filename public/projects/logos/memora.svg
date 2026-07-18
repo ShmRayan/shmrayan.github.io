@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="Memora">
+  <rect width="32" height="32" rx="8" fill="#8E6080"/>
+  <!-- Stacked photos: back frame -->
+  <path
+    d="M8 11.5V10a2.5 2.5 0 0 1 2.5-2.5H18"
+    stroke="#FFFAFA"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Front frame -->
+  <rect x="10.5" y="9.5" width="13.5" height="13.5" rx="2.2" stroke="#FFFAFA" stroke-width="1.7"/>
+  <!-- Sun -->
+  <circle cx="19.8" cy="13.6" r="1.35" fill="#FFFAFA"/>
+  <!-- Mountains -->
+  <path
+    d="M12.2 20.8 16.1 16.4a1.4 1.4 0 0 1 2.05 0L19.4 18l1.35-1.15a1.35 1.35 0 0 1 1.85.08L25 20.8"
+    stroke="#FFFAFA"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

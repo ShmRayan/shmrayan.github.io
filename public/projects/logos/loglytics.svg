@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="Loglytics">
+  <defs>
+    <linearGradient id="lg" x1="5" y1="4" x2="27" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366f1"/>
+      <stop offset="0.55" stop-color="#6d4ed6"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#lg)"/>
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="7.25" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+  <path d="M16 5.5 24.25 9.65v7.9c0 5.05-3.05 9.35-8.25 11.45a.9.9 0 0 1-.8 0C9.8 26.9 6.75 22.6 6.75 17.5V9.65L16 5.5z" fill="none" stroke="#fff" stroke-width="1.35" stroke-linejoin="round" stroke-opacity="0.94"/>
+  <path d="M13 11.25h6M16 9v4.75M12.25 14.25l3.75 2.25 3.75-2.25" stroke="#fff" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.88"/>
+  <circle cx="13" cy="11.25" r="1.05" fill="#fff" fill-opacity="0.92"/>
+  <circle cx="19" cy="11.25" r="1.05" fill="#fff" fill-opacity="0.92"/>
+  <circle cx="16" cy="9" r="1.05" fill="#fff" fill-opacity="0.92"/>
+  <circle cx="16" cy="16.5" r="1.05" fill="#fff" fill-opacity="0.92"/>
+  <path d="M10.25 23.75 14.5 19.5l3.25 1.25 4.25-4.5 3.75-2.5" fill="none" stroke="#fff" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.96"/>
+  <circle cx="25.75" cy="14" r="1.15" fill="#fff" fill-opacity="0.98"/>
+</svg>
