@@ -31,11 +31,10 @@ type RoleHistory = { role: string; period: string };
 
 const CONTENT = {
   en: {
-    role: "Full-Stack Developer",
-    availability: "New grad · Open to full-time · Available Jan 2027 · Ottawa",
+    role: "Software Developer",
     location: "Ottawa, Ontario, Canada",
     sub:
-      "uOttawa Software Engineering · graduating Dec 2026. Looking for a new-grad role where I ship end-to-end: modern frontends, APIs, AI integrations, and production systems.",
+      "uOttawa Software Engineering · graduating Dec 2026. I ship end-to-end: modern frontends, APIs, AI integrations, and production systems.",
     resumeBtn: "Resume",
     resumeLink:
       "https://drive.google.com/file/d/12LPdYfG_PGixXeaPjKfXeezIIZBZhs8a/view?usp=sharing",
@@ -172,11 +171,10 @@ const CONTENT = {
     ] as Project[],
   },
   fr: {
-    role: "Développeur full-stack",
-    availability: "New grad · Ouvert aux postes permanents · Dispo janv. 2027 · Ottawa",
+    role: "Développeur logiciel",
     location: "Ottawa, Ontario, Canada",
     sub:
-      "Génie logiciel à uOttawa · diplomation déc. 2026. Je cherche un poste new-grad pour livrer de bout en bout: frontends modernes, APIs, intégrations IA et systèmes en production.",
+      "Génie logiciel à uOttawa · diplomation déc. 2026. Je livre de bout en bout: frontends modernes, APIs, intégrations IA et systèmes en production.",
     resumeBtn: "CV",
     resumeLink:
       "https://drive.google.com/file/d/12LPdYfG_PGixXeaPjKfXeezIIZBZhs8a/view?usp=sharing",
@@ -330,9 +328,6 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="mb-5 text-sm font-medium uppercase tracking-[0.18em] text-accent">
-                {t.availability}
-              </p>
               <h1 className="font-display text-[clamp(2.75rem,7vw,5.25rem)] font-semibold leading-[0.95] tracking-tight text-ink">
                 <Typewriter text={"Rayan Saadani\nHassani"} />
               </h1>
