@@ -324,7 +324,7 @@ export default function Home() {
       <main id="top">
         <section className="relative flex min-h-[100dvh] flex-col overflow-hidden border-b border-line">
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(12,18,34,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(12,18,34,0.04)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
-          <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pb-24 pt-24 md:px-8 md:pb-28 md:pt-28">
+          <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-start px-5 pb-24 pt-28 md:px-8 md:pb-28 md:pt-32">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
