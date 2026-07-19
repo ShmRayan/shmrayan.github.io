@@ -34,7 +34,6 @@ const CONTENT = {
     role: "Full-Stack Developer",
     availability: "New grad · Open to full-time · Available Jan 2027 · Ottawa",
     location: "Ottawa, Ontario, Canada",
-    headline: "I build full-stack products from UI to API.",
     sub:
       "uOttawa Software Engineering · graduating Dec 2026. Looking for a new-grad role where I ship end-to-end: modern frontends, APIs, AI integrations, and production systems.",
     resumeBtn: "Resume",
@@ -176,7 +175,6 @@ const CONTENT = {
     role: "Développeur full-stack",
     availability: "New grad · Ouvert aux postes permanents · Dispo janv. 2027 · Ottawa",
     location: "Ottawa, Ontario, Canada",
-    headline: "Je construis des produits full-stack, du UI à l’API.",
     sub:
       "Génie logiciel à uOttawa · diplomation déc. 2026. Je cherche un poste new-grad pour livrer de bout en bout: frontends modernes, APIs, intégrations IA et systèmes en production.",
     resumeBtn: "CV",
@@ -339,10 +337,7 @@ export default function Home() {
                 <Typewriter text={"Rayan Saadani\nHassani"} />
               </h1>
               <p className="mt-4 text-base font-medium text-ink-soft md:text-lg">{t.role}</p>
-              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">
-                {t.headline}
-              </p>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">{t.sub}</p>
+              <p className="mt-8 max-w-xl text-base leading-relaxed text-muted md:text-lg">{t.sub}</p>
 
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <a
