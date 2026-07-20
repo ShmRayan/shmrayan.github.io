@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <base href="/CVScriba/" />
+  <title>CVScriba — Your CV, written for the job</title>
+  <meta name="description" content="CVScriba turns one master resume into a tailored CV and cover letter for every role — faithful to your experience, sharp for each posting." />
+  <meta property="og:title" content="CVScriba" />
+  <meta property="og:description" content="Your CV, written for the job. Still yours." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://shmrayan.me/CVScriba/" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top">CVScriba</a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#why">Why</a>
+      <a class="nav-cta" href="https://cvscriba.shmrayan.me">Open app</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-atmosphere" aria-hidden="true">
+        <span class="orb orb-a"></span>
+        <span class="orb orb-b"></span>
+        <span class="orb orb-c"></span>
+        <span class="drift drift-1"></span>
+        <span class="drift drift-2"></span>
+        <span class="drift drift-3"></span>
+      </div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="brand reveal">CVScriba</p>
+          <h1 class="reveal delay-1">Your CV, written for the job.</h1>
+          <p class="lede reveal delay-2">
+            One master profile. Every application sharpened — resume and cover letter,
+            faithful to what you’ve done, tuned to what they’re hiring for.
+          </p>
+          <div class="cta-row reveal delay-3">
+            <a class="btn btn-primary" href="https://cvscriba.shmrayan.me">Open app</a>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-4" aria-hidden="true">
+          <div class="doc-stack">
+            <article class="doc doc-letter float-slow">
+              <span class="doc-label">Cover</span>
+              <p class="doc-line short"></p>
+              <p class="doc-line"></p>
+              <p class="doc-line mid"></p>
+              <p class="doc-line"></p>
+              <p class="doc-line short"></p>
+            </article>
+            <article class="doc doc-cv float">
+              <span class="doc-name">Alex Rivera</span>
+              <span class="doc-role">Software Engineer</span>
+              <div class="doc-rule"></div>
+              <p class="doc-line"></p>
+              <p class="doc-line mid"></p>
+              <p class="doc-line short"></p>
+              <div class="doc-rule thin"></div>
+              <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section how" id="how">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. One clean application.</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">01</span>
+          <h3>Drop your profile</h3>
+          <p>Your experience, projects, and proof — the source of truth. Nothing invented.</p>
+        </li>
+        <li>
+          <span class="step-num">02</span>
+          <h3>Paste the role</h3>
+          <p>A job URL or the full posting. CVScriba reads must-haves, tone, and domain.</p>
+        </li>
+        <li>
+          <span class="step-num">03</span>
+          <h3>Ship the set</h3>
+          <p>A tailored CV and cover letter as print-ready PDFs — ready to send.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section why" id="why">
+      <p class="eyebrow">Why CVScriba</p>
+      <h2>Built for people who still care about the truth.</h2>
+      <div class="why-grid">
+        <div>
+          <h3>Faithful by design</h3>
+          <p>Every line is grounded in your real experience. No fake metrics. No borrowed titles.</p>
+        </div>
+        <div>
+          <h3>Strategy, not fluff</h3>
+          <p>Projects reordered, skills cut, pitch rewritten for <em>this</em> company — then reviewed.</p>
+        </div>
+        <div>
+          <h3>CV + letter, same breath</h3>
+          <p>One run produces the documents you actually send. Track every application as you go.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section waitlist" id="waitlist">
+      <p class="eyebrow">Early access</p>
+      <h2>Be first when the doors open.</h2>
+      <p class="waitlist-lede">
+        We’re finishing the product. Leave your email — we’ll invite you before the public launch.
+      </p>
+      <form class="waitlist-form" id="waitlist-form" novalidate>
+        <label class="sr-only" for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="you@company.com"
+        />
+        <button type="submit" class="btn btn-primary">Join the list</button>
+      </form>
+      <p class="form-note" id="form-note" hidden></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span class="logo">CVScriba</span>
+    <p>Written for the job. Still yours.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
