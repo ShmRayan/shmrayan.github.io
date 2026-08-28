@@ -142,6 +142,18 @@ const CONTENT = {
         links: [{ label: "Live", href: "https://cvscriba.com" }],
       },
       {
+        id: "umple",
+        title: "Umple",
+        desc: "Capstone work on the open-source Umple modeling platform: integrated AI agent skills in UmpleOnline, extended requirements tagging across UML entities, and shipped UX improvements that turn specs into validated models.",
+        stack: ["Java", "JavaScript", "UML", "LLMs"],
+        logo: "/projects/logos/umple.svg",
+        preview: "/projects/previews/umple.svg",
+        links: [
+          { label: "Live", href: "https://try.umple.org/" },
+          { label: "Code", href: "https://github.com/umple/umple" },
+        ],
+      },
+      {
         id: "silsila",
         title: "Silsila",
         desc: "Built a SaaS family-tree product: GED import, voice-driven edits, oral history, and a multilingual assistant over the graph.",
@@ -272,6 +284,8 @@ CONTENT.fr.projects = CONTENT.en.projects.map((p) => {
       "SaaS d’observabilité IA: stream de logs serveur en temps réel, analyse de cause racine par LLM, et correctifs actionnables en langage clair.",
     cvscriba:
       "SaaS agent IA qui réécrit CV et lettre par offre, avec contrôles de fidélité et PDFs prêts à imprimer.",
+    umple:
+      "Travail de capstone sur la plateforme open-source Umple : intégration de skills IA dans UmpleOnline, extension du balisage des exigences sur les entités UML, et améliorations UX pour transformer des specs en modèles validés.",
     silsila:
       "SaaS d’arbre généalogique: import GED, éditions à la voix, mémoires orales, et assistant multilingue sur le graphe.",
     memora:
