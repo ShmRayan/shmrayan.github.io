@@ -146,8 +146,8 @@ const CONTENT = {
         title: "Umple",
         desc: "Capstone work on the open-source Umple modeling platform: integrated AI agent skills in UmpleOnline, extended requirements tagging across UML entities, and shipped UX improvements that turn specs into validated models.",
         stack: ["Java", "JavaScript", "UML", "LLMs"],
-        logo: "/projects/logos/umple.svg",
-        preview: "/projects/previews/umple.svg",
+        logo: "/projects/logos/umple.png",
+        preview: "/projects/previews/umple.png",
         links: [
           { label: "Live", href: "https://try.umple.org/" },
           { label: "Code", href: "https://github.com/umple/umple" },
